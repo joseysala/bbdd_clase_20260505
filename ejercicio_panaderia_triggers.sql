@@ -135,3 +135,31 @@ Ejercicio 5: Protección de clientes VIP frente a borrados accidentales
 
     Requisito: impedir borrado de clientes vip indicando: "No se puede eliminar un cliente VIP. Revoque sus privilegios primero."
 */
+
+
+
+-- Segunda parte
+
+-- Tabla para el log de auditoría
+CREATE TABLE log_cambios_precio (
+    id_log INT AUTO_INCREMENT PRIMARY KEY,
+    id_producto INT NOT NULL,
+    precio_anterior DECIMAL(5,2) NOT NULL,
+    precio_nuevo DECIMAL(5,2) NOT NULL,
+    fecha_modificacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    usuario_db VARCHAR(50) -- Para registrar qué usuario de la BD hizo el cambio
+) ENGINE=InnoDB;
+
+/*
+Ejercicio 6: Auditoría de cambios de precios (Tabla Log)
+
+    Contexto: El precio de los productos es un dato muy sensible. El dueño de la panadería quiere llevar un registro estricto (una auditoría) cada vez que alguien modifique el precio de un pan o un pastel, para saber cuál era el precio anterior, cuál es el nuevo y cuándo se cambió.
+
+    Requisito: satisfacer necesidad del cliente
+
+Ejercicio 7: Control estricto del flujo de estados de un pedido
+
+    Contexto: Los pedidos tienen un ciclo de vida lógico (Pendiente -> Preparando -> Completado o Cancelado). Una vez que un pedido ha sido marcado como 'Completado' (entregado al cliente) o 'Cancelado', por política de la empresa, ya no se puede volver a cambiar su estado a 'Pendiente' o 'Preparando'. Esto evita fraudes o confusiones en el mostrador.
+
+    Requisito: satisfacer necesidad del cliente
+*/
