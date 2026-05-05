@@ -1,6 +1,6 @@
 -- Creación de la base de datos
 CREATE DATABASE IF NOT EXISTS panaderia_2526;
-USE panaderia_db;
+USE panaderia_2526;
 
 -- Tabla 1: Clientes
 CREATE TABLE clientes (
